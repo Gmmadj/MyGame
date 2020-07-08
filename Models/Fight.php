@@ -18,7 +18,7 @@ class Fight
 		$this->hero = $hero;
 		$this->monstr = $monstr;
 
-		if ( $this->move > 0 || $this->move % 3 == 0 ) {
+		if ( $this->move > 0 and $this->move % 3 == 0 ) {
 			$this->dealingDamage();
 		}
 	}
@@ -26,14 +26,13 @@ class Fight
 	public function takingDamage()
 	{
 		$_SESSION['sumDM'] += $this->hero->atack;
-
+		$_SESSION['move'] += 1; 
 		$this->die();
 	}
 
 	public function dealingDamage()
 	{
 		$_SESSION['sumDH'] += $this->monstr->atack;
-
 		$this->die();
 	}
 

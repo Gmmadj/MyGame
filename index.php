@@ -7,7 +7,6 @@ include 'Models/Fight.php';
 session_start();
 
 $_SESSION['message'];
-$_SESSION['move'] = 0;
 
 $hero = new Hero();
 $monstr = new Monstr();
@@ -35,7 +34,11 @@ if ($_GET['block'] == true) {
 </head>
 <body>
 	<?php if ($_GET['start'] == true || $_SESSION['start'] == true): ?>
-		<?php $_SESSION['start'] = true ?>
+		<?php 
+		$_SESSION['start'] = true;
+
+		?>
+		<h1>Ход №<?= $_SESSION['move'] ?></h1>
 		<table class="main">
 			<tr>
 				<th class="item">
@@ -58,13 +61,14 @@ if ($_GET['block'] == true) {
 					<a href="?block=true"><img src="block.png" alt=""></a>
 				</th>
 				<th class="item">
-					<p>Жизней: <?= $hero->hp ?></p>
+					<p>Жизней: <?= $hero->hp - $_SESSION['sumDH']?></p>
 					<p>Урон: <?= $hero->atack ?></p>
 					<p>Защита: <?= $hero->block ?></p>
 				</th>
 			</tr>
 		</table>
 	<?php else: ?>
+		<?php $_SESSION['move'] = 0; ?>
 		<h1><?= $_SESSION['message'] ?></h1>
 		<a href="?start=true"><button class="wow-btn">Начать бой</button></a>	
 	<?php endif ?>
