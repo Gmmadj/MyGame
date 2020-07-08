@@ -24,7 +24,10 @@ $monstr = new Monstr();
 				<img src="monstr.png" alt="">
 			</th>
 			<th class="item">
-				
+				<p>Жизней: <?= $monstr->hp ?></p>
+				<p>Урон: <?= $monstr->atack ?></p>
+				<p>Защита: <?= $monstr->block ?></p>
+				<p>Атакует через: <?= $monstr->move ?></p>
 			</th>
 		</tr>
 		<tr>
@@ -35,9 +38,9 @@ $monstr = new Monstr();
 				<a href="?block=10"><img src="block.png" alt=""></a>
 			</th>
 			<th class="item">
-				<p></p>
-				<p></p>
-				<p></p>
+				<p>Жизней: <?= $hero->hp ?></p>
+				<p>Урон: <?= $hero->atack ?></p>
+				<p>Защита: <?= $hero->block ?></p>
 			</th>
 		</tr>
 	</table>
