@@ -2,6 +2,7 @@
 
 class Hero
 {
+	public $name = 'hero';
 	public $hp;
 	public $atack;
 	public $block;

@@ -2,6 +2,7 @@
 
 class Monstr
 {
+	public $name = 'Monstr';
 	public $hp;
 	public $atack;
 	public $block;

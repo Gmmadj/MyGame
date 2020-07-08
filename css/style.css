@@ -6,4 +6,9 @@
 .item {
 	width: 33vw;
 	text-align: center;
+	padding-top: 5vh;
+}
+.wow-btn {
+	width: 95vw;
+	height: 95vh;
 }
