@@ -1,0 +1,9 @@
+.main {
+	width: 100vw;
+	margin: auto;
+}
+
+.item {
+	width: 33vw;
+	text-align: center;
+}
