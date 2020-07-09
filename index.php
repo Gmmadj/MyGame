@@ -25,55 +25,7 @@ if ($_GET['block'] == true) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/style.css">
-	<title>Бой</title>
-</head>
-<body>
-	<?php if ($_GET['start'] == true || $_SESSION['start'] == true): ?>
-		<?php 
-		$_SESSION['start'] = true;
 
-		?>
-		<h1>Ход №<?= $_SESSION['move'] ?></h1>
-		<table class="main">
-			<tr>
-				<th class="item">
-				</th>
-				<th class="item">
-					<img src="monstr.png" alt="">
-				</th>
-				<th class="item">
-					<p>Жизней: <?= $monstr->hp - $_SESSION['sumDM'] ?></p>
-					<p>Урон: <?= $monstr->atack ?></p>
-					<p>Защита: <?= $monstr->block ?></p>
-					<p>Атакует через: <?= $monstr->move ?></p>
-				</th>
-			</tr>
-			<tr>
-				<th class="item">
-					<a href="?atack=true"><img src="atack.png" alt=""></a>
-				</th>
-				<th class="item">
-					<a href="?block=true"><img src="block.png" alt=""></a>
-				</th>
-				<th class="item">
-					<p>Жизней: <?= $hero->hp - $_SESSION['sumDH']?></p>
-					<p>Урон: <?= $hero->atack ?></p>
-					<p>Защита: <?= $hero->block ?></p>
-				</th>
-			</tr>
-		</table>
-	<?php else: ?>
-		<?php $_SESSION['move'] = 0; ?>
-		<h1><?= $_SESSION['message'] ?></h1>
-		<a href="?start=true"><button class="wow-btn">Начать бой</button></a>	
-	<?php endif ?>
-</body>
-</html>
 
 <!-- 
 И так, сначала выведем монстра и героя и их данные.

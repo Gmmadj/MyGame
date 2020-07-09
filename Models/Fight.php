@@ -2,14 +2,12 @@
 
 class Fight
 {
-	public $move = 0;
+	public $move = false;
 	public $hero;
 	public $monstr;
 
 	public function __construct($hero, $monstr)
 	{
-		$this->move = $_SESSION['move'];
-
 		$this->run($hero, $monstr);
 	}
 
