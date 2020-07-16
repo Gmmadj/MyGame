@@ -16,7 +16,7 @@
 				<th class="item">
 				</th>
 				<th class="item">
-					<img src="monstr.png" alt="">
+					<img src="images/monstr.png" alt="">
 				</th>
 				<th class="item">
 					<p>Жизней: <?= $monstr->hp - $_SESSION['sumDM'] ?></p>
@@ -27,10 +27,10 @@
 			</tr>
 			<tr>
 				<th class="item">
-					<a href="?atack=true"><img src="atack.png" alt=""></a>
+					<a href="?atack=true"><img src="images/atack.png" alt=""></a>
 				</th>
 				<th class="item">
-					<a href="?block=true"><img src="block.png" alt=""></a>
+					<a href="?block=true"><img src="images/block.png" alt=""></a>
 				</th>
 				<th class="item">
 					<p>Жизней: <?= $hero->hp - $_SESSION['sumDH']?></p>
