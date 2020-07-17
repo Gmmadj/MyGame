@@ -2,4 +2,4 @@
 
 use core\Route;
 
-$route = new Route();
+Route::run();

@@ -2,15 +2,27 @@
 
 namespace core;
 
-class Route
+final class Route
 {
-	public function __construct()
+	static public $route = array();
+
+	public function fillRoute($route)
 	{
-		$this->run();
+		self::$route = explode("/", trim($route));
 	}
 
-	public function run()
+	public function connect()
 	{
-		var_dump($_GET);
+		$pathController = 'controllers\\'. ucfirst(self::$route[0]) .'Controller';
+		$action = 'action'. self::$route[1];
+
+		$controller = new $pathController;
+		$controller->$action();
+	}
+
+	static public function run()
+	{
+		self::fillRoute(key($_GET));
+		self::connect();
 	}
 }
