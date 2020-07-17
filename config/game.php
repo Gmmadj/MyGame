@@ -1,1 +1,7 @@
-<h1>game</h1>
+<?php 
+
+$configGame = [
+	'defaultController' => 'main',
+];
+
+return $configGame;

@@ -1,6 +1,6 @@
 <?php 
 
 require 'core/Autoload.php';
-require 'core/testMyGame.php';
+$config = require 'config/game.php';
 
-$_SERVER['REQUEST_URL'] = '/';
+$app = new core\testMyGame($config);

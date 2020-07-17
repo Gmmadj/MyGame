@@ -1,5 +1,17 @@
 <?php 
 
+namespace core;
+
 use core\Route;
 
-Route::run();
+class testMyGame
+{
+	static public $config;
+
+	public function __construct($config)
+	{
+		self::$config = $config;
+
+		Route::run();
+	}
+}

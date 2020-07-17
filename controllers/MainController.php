@@ -4,7 +4,7 @@ namespace controllers;
 
 class MainController
 {
-	public function actionName()
+	public function actionIndex()
 	{
 		require_once "views/fight.php";
 
