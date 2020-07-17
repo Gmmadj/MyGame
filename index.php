@@ -1,3 +1,4 @@
 <?php 
 
-var_dump($_GET);
+require 'core/Autoload.php';
+require 'core/testMyGame.php';
