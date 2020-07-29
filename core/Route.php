@@ -4,51 +4,97 @@ namespace core;
 
 use core\testMyGame;
 
-class Route extends testMyGame
+class Route
 {
 	static public $route = array();
 
-	public function fillRoute($route)
+	static private $controller;
+	static private $pathController;
+
+	static private $action;
+	static private $pathAction;
+
+	/**
+	 * Заполняет маршрут
+	 */
+	public function dividesRoute($route)
 	{
 		$route = explode("/", trim($route));
 
 		if (!$route[0]) {
-			$route[0] = self::$config['defaultController'];
+			self::setController(testMyGame::$config['defaultController']);
 		}
+		else {
+			self::setController($route[0]);
+		}
+
 		if (!$route[1]) {
-			$route[1] = 'index';
+			$action = testMyGame::$config['defaultAction'];
+			self::setAction($action);
 		}
+		else {
+			self::setAction($route[1]);
+		}
+
 		if (!$route[2]) {
 			$route[2] = '';
 		}
-
-		self::$route = $route;
 	}
 
 	public function connect()
 	{
-		$pathController = 'controllers\\'. ucfirst(self::$route[0]) .'Controller';
-		$action = 'action'. self::$route[1];
-
-		self::check($pathController, $action);
-
-		$controller = new $pathController;
-		$controller->$action();
+		self::setPathController();
+		self::setPathAction();
+		
+		if (self::checkRoute()) {
+			$controller = new self::$pathController;
+			$controller->{self::$pathAction}();
+		}
 	}
 
-	public function check($controller, $action)
+	public function checkRoute()
 	{
-		if (method_exists($controller, $action)) {
+		if (method_exists(self::$pathController, self::$pathAction)) {
 			return true;
 		}
 		else {
-			die('<h1>Ошибка 404. Путь не найден.<h2>');
+			return false;
 		}
 	}
 
 	static public function run()
 	{
-		self::fillRoute(key($_GET));
+		self::dividesRoute(self::getRoute());
 		self::connect();
+	}
+
+	public function getRoute()
+	{
+		return key($_GET);
+	}
+
+	public function setPathController()
+	{
+		self::$pathController = 'controllers\\'. ucfirst(self::$controller) .'Controller';
+	}
+
+	public function setPathAction()
+	{
+		self::$pathAction = 'action'. self::$action;
+	}
+
+	public function setController($controller)
+	{
+		self::$controller = $controller;
+	}
+
+	public function setAction($action)
+	{
+		self::$action = $action;
+	}
+
+	public function getAciton()
+	{
+		return self::$action;
 	}
 }

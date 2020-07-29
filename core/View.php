@@ -10,7 +10,7 @@ class View
 	{
 		$nameView = testMyGame::$nameView;
 
-		require('views\\'. $nameView .'.php');
+		require_once('views\\'. $nameView .'.php');
 	}
 
 	public function getTitle()

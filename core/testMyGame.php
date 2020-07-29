@@ -29,4 +29,9 @@ class testMyGame
 	{
 		self::$nameTitle = $nameTitle;
 	}
+
+	static public function getTitle()
+	{
+		return self::$nameTitle;
+	}
 }
