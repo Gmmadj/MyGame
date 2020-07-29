@@ -3,11 +3,13 @@
 namespace core;
 
 use core\Route;
+use core\View;
 
 class testMyGame
 {
 	static public $config;
-	static private $nameTitle;
+	static public $nameTitle;
+	static public $nameView;
 
 	public function __construct($config)
 	{
@@ -18,19 +20,13 @@ class testMyGame
 
 	static public function goView($nameView = 'index')
 	{
-		ob_start();
-		testMyGame::setTitle('Главная страница');
-		require_once('views\\'. $nameView .'.php');
-		ob_end_flush();
+		self::$nameView = $nameView;
+		$view = new View;
+		$view->displayView();
 	}
 
 	static public function setTitle($nameTitle)
 	{
 		self::$nameTitle = $nameTitle;
-	}
-
-	static public function getTitle()
-	{
-		return self::$nameTitle;
 	}
 }

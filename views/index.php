@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title><?php self::getTitle() ?></title>
+	<title></title>
 </head>
 <body>
-	
+	<?= $this->getTitle() ?>
 </body>
 </html>
