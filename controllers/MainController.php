@@ -7,9 +7,13 @@ use core\View;
 
 class MainController
 {
-	public function actionIndex()
+	public function actionIndex($id, $name)
 	{
 		testMyGame::setTitle('Главная страница');
+
+		echo $id;
+		echo $name;
+
 		testMyGame::goView();
 	}
 

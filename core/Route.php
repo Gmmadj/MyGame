@@ -14,6 +14,8 @@ class Route
 	static private $action;
 	static private $pathAction;
 
+	static private $params;
+
 	/**
 	 *	Запуск маршрутизатора. Гланая функция.
 	 */
@@ -48,6 +50,9 @@ class Route
 		if (!$route[2]) {
 			$route[2] = '';
 		}
+		else {
+			self::setParams([$route[2], $route[3]]);
+		}
 	}
 
 	public function connect()
@@ -57,7 +62,7 @@ class Route
 		
 		if (self::checkRoute()) {
 			$controller = new self::$pathController;
-			$controller->{self::$pathAction}();
+			$controller->{self::$pathAction}(...self::$params);
 		}
 	}
 
@@ -67,7 +72,7 @@ class Route
 			return true;
 		}
 		else {
-			return false;
+			die('Ошибка в проверке пути.<br><hr> Не найдено действие <b>'. self::$pathAction .'</b><Br> В контроллере <b>'. self::$pathController .'</b>');
 		}
 	}
 
@@ -79,28 +84,40 @@ class Route
 		return key($_GET);
 	}
 
+	/**
+	 * Установка пути контроллера controllers\MainController
+	 */
 	public function setPathController()
 	{
 		self::$pathController = 'controllers\\'. ucfirst(self::$controller) .'Controller';
 	}
 
+	/**
+	 *	Установка пути действия actionIndex
+	 */
 	public function setPathAction()
 	{
 		self::$pathAction = 'action'. self::$action;
 	}
 
+	/**
+	 * Установка контроллера
+	 */
 	public function setController($controller)
 	{
 		self::$controller = $controller;
 	}
 
+	/**
+	 *	Установка действия
+	 */
 	public function setAction($action)
 	{
 		self::$action = $action;
 	}
 
-	public function getAciton()
+	public function setParams($params)
 	{
-		return self::$action;
+		self::$params = $params;
 	}
 }
