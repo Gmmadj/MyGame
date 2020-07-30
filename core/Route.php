@@ -15,6 +15,15 @@ class Route
 	static private $pathAction;
 
 	/**
+	 *	Запуск маршрутизатора. Гланая функция.
+	 */
+	static public function run()
+	{
+		self::dividesRoute(self::getRoute());
+		self::connect();
+	}
+
+	/**
 	 * Заполняет маршрут
 	 */
 	public function dividesRoute($route)
@@ -62,12 +71,9 @@ class Route
 		}
 	}
 
-	static public function run()
-	{
-		self::dividesRoute(self::getRoute());
-		self::connect();
-	}
-
+	/**
+	 *	Получаю маршрут, как название переменной: main/index
+	 */
 	public function getRoute()
 	{
 		return key($_GET);
